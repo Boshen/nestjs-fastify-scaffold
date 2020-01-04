@@ -22,6 +22,7 @@
   "dependencies": {
     "@nestjs/common": "^6.7.2",
     "@nestjs/core": "^6.7.2",
+    "@nestjs/platform-express": "^6.10.13",
     "@nestjs/platform-fastify": "^6.10.13",
     "@nestjs/swagger": "^4.1.2",
     "fastify-swagger": "^2.5.0",
@@ -29,7 +30,8 @@
     "pino-pretty": "^3.5.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.0",
-    "rxjs": "^6.5.3"
+    "rxjs": "^6.5.3",
+    "swagger-ui-express": "^4.1.2"
   },
   "devDependencies": {
     "@nestjs/cli": "^6.9.0",

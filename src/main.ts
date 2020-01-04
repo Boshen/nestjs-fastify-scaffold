@@ -8,7 +8,7 @@ import { AppModule } from './app.module'
 
 declare const module: any
 
-async function bootstrap() {
+async function bootstrapFastify() {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
     new FastifyAdapter({
@@ -35,4 +35,22 @@ async function bootstrap() {
   }
 }
 
-bootstrap()
+async function bootstrapExpress() {
+  const app = await NestFactory.create(AppModule)
+
+  const options = new DocumentBuilder().setVersion('1.0.0').build()
+  const document = SwaggerModule.createDocument(app, options)
+  SwaggerModule.setup('/', app, document)
+
+  app.use(helmet()).enableCors()
+
+  await app.listen(4000)
+
+  if (module.hot) {
+    module.hot.accept()
+    module.hot.dispose(() => app.close())
+  }
+}
+
+bootstrapFastify()
+bootstrapExpress()
