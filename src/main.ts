@@ -27,6 +27,8 @@ async function bootstrapFastify() {
 
   app.use(helmet()).enableCors()
 
+  app.enableShutdownHooks() // <-- throws "Error [ERR_SERVER_NOT_RUNNING]: Server is not running." when shutting down
+
   await app.listen(3000)
 
   if (module.hot) {
@@ -35,6 +37,7 @@ async function bootstrapFastify() {
   }
 }
 
+// @ts-ignore
 async function bootstrapExpress() {
   const app = await NestFactory.create(AppModule)
 
@@ -43,6 +46,8 @@ async function bootstrapExpress() {
   SwaggerModule.setup('/', app, document)
 
   app.use(helmet()).enableCors()
+
+  // app.enableShutdownHooks()
 
   await app.listen(4000)
 
@@ -53,4 +58,4 @@ async function bootstrapExpress() {
 }
 
 bootstrapFastify()
-bootstrapExpress()
+// bootstrapExpress()
