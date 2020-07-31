@@ -1,21 +1,26 @@
 import { Test, TestingModule } from '@nestjs/testing'
+import { NestFastifyApplication, FastifyAdapter } from '@nestjs/platform-fastify'
+
+import { AppModule } from './app.module'
 import { AppController } from './app.controller'
-import { AppService } from './app.service'
 
 describe('AppController', () => {
-  let appController: AppController
+  let app: NestFastifyApplication
 
   beforeEach(async () => {
-    const app: TestingModule = await Test.createTestingModule({
-      controllers: [AppController],
-      providers: [AppService],
+    const testingModule: TestingModule = await Test.createTestingModule({
+      imports: [AppModule],
     }).compile()
 
-    appController = app.get<AppController>(AppController)
+    app = testingModule.createNestApplication<NestFastifyApplication>(new FastifyAdapter())
+
+    await app.init()
+    await app.getHttpAdapter().getInstance().ready()
   })
 
   describe('root', () => {
     it('should return "Hello World!"', () => {
+      const appController = app.get<AppController>(AppController)
       expect(appController.getHello()).toBe('Hello World!')
     })
   })
