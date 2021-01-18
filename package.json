@@ -20,13 +20,13 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@nestjs/common": "^7.4.2",
-    "@nestjs/core": "^7.4.2",
-    "@nestjs/platform-express": "^7.4.2",
-    "@nestjs/platform-fastify": "^7.4.2",
-    "@nestjs/platform-socket.io": "^7.4.2",
-    "@nestjs/swagger": "^4.5.12",
-    "@nestjs/websockets": "^7.4.2",
+    "@nestjs/common": "^7.6.5",
+    "@nestjs/core": "^7.6.5",
+    "@nestjs/platform-express": "^7.6.5",
+    "@nestjs/platform-fastify": "^7.6.5",
+    "@nestjs/platform-socket.io": "^7.6.5",
+    "@nestjs/swagger": "^4.7.11",
+    "@nestjs/websockets": "^7.6.5",
     "fastify-swagger": "^3.1.2",
     "helmet": "^3.23.3",
     "pino-pretty": "^4.0.0",
@@ -36,9 +36,9 @@
     "swagger-ui-express": "^4.1.4"
   },
   "devDependencies": {
-    "@nestjs/cli": "^7.4.1",
-    "@nestjs/schematics": "^7.0.1",
-    "@nestjs/testing": "^7.4.2",
+    "@nestjs/cli": "^7.5.4",
+    "@nestjs/schematics": "^7.2.6",
+    "@nestjs/testing": "^7.6.5",
     "@types/helmet": "^0.0.47",
     "@types/jest": "^26.0.3",
     "@types/node": "^14.0.14",
@@ -93,5 +93,8 @@
       "prettier --parser=typescript --write",
       "git add"
     ]
+  },
+  "resolutions": {
+    "webpack": "4"
   }
 }
